@@ -25,6 +25,7 @@ Plotting anomaly scores.
 (Copied from grok-projects/tools/db_utils.py)
 """
 
+from optparse import OptionParser
 import os
 import subprocess
 import sys
@@ -68,6 +69,19 @@ def plotFile(fileName, chartTitle=None):
 
 
 if __name__ == "__main__":
-  fileName = sys.argv[1]
+  helpString = (
+    "\n%prog /path/to/anomaly_scores.csv"
+    "\n%prog --help"
+    "\n"
+    "\nPlots anomaly scores."
+  )
+
+  # All the command line options
+  parser = OptionParser(helpString)
+
+  options, args = parser.parse_args(sys.argv[1:])
+
+  # Run it
+  fileName = args[0]
   url = plotFile(fileName, chartTitle=fileName)
   print "URL is %s" % (url)
