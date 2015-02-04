@@ -56,7 +56,7 @@ def plotFile(fileName, chartTitle=None):
               includeAnomalyScore = True,
               includeLabels = False,
               jeffPlots = False,
-              largePlots = False,
+              largePlots = True,
               verbosity=0,
               chartTitle=chartTitle)
 
